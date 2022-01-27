@@ -1,3 +1,4 @@
+const namesListRoute = require('./names-list.route')
 const whatDoWeDoRoute = require('./what-do-we-do.route')
 const whoAreWeRoute = require('./who-are-we.route')
 
@@ -12,6 +13,10 @@ const infoFeature =  {
         method: 'GET',
         url: '/what',
         handler: whatDoWeDoRoute
+    }, {
+        method: 'GET',
+        url: '/names',
+        handler: namesListRoute
     }]
 }
 
