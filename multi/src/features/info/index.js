@@ -1,4 +1,4 @@
-const whatDoWeDo = require('./what-do-we-do.route')
+const whatDoWeDoRoute = require('./what-do-we-do.route')
 const whoAreWeRoute = require('./who-are-we.route')
 
 const infoFeature =  {
@@ -11,7 +11,7 @@ const infoFeature =  {
     }, {
         method: 'GET',
         url: '/what',
-        handler: whatDoWeDo
+        handler: whatDoWeDoRoute
     }]
 }
 

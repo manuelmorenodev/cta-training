@@ -1,3 +1,3 @@
-const whatDoWeDo = (request, reply) => reply.send('cool things');
+const whatDoWeDoRoute = (request, reply) => reply.send('cool things');
 
-module.exports = whatDoWeDo;
+module.exports = whatDoWeDoRoute;
