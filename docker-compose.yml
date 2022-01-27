@@ -36,4 +36,7 @@ services:
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_DEV_MODE: "true"
 
-  
+  api:
+    build: multi
+    ports:
+      - 4000:4000
