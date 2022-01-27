@@ -4,7 +4,7 @@ const GET_PUBLIC_USERS = `
             name
         }
     }
-`
+`;
 
 module.exports = {
     GET_PUBLIC_USERS

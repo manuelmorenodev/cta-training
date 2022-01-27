@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const {GET_PUBLIC_USERS} = require('./queries')
+const { GET_PUBLIC_USERS } = require('./queries')
 
 const namesListRoute = async (request, reply) => {
 
@@ -12,7 +12,9 @@ const namesListRoute = async (request, reply) => {
 
     const names = res.data.data.users
         .map(user => user.name)
-        .map(name => name.toUpperCase())
+        .map(name => ({
+            value: name.toUpperCase()
+        }));
 
     reply.send(names)
 
