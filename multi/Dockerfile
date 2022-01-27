@@ -1,8 +1,8 @@
-FROM node:16-alpine3.14
+FROM node:16
 
-COPY . /app
+WORKDIR /usr/src/app
+ADD package.json /usr/src/app
+ADD package-lock.json /usr/src/app
+RUN npm install
 
-WORKDIR /app
-
-RUN npm install --dev
-CMD npm start
+ENTRYPOINT [ "npm", "start" ]

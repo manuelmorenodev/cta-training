@@ -4,9 +4,10 @@ const multiplyRoute = (request, reply) => {
     if (request.body.input.num1 === 5) {
         reply.status(416).send({
             message: 'No nos gustan los cincos',
-            // extensions: {
-
-            // }
+            extensions: {
+                path: "$.input.num1",
+                code: 123
+            }
         })
     }
 
