@@ -16,7 +16,9 @@ export default function ExpensesList() {
         }
     `
 
-    const resExpenses = useQuery(QUERY_EXPENSES)
+    const resExpenses = useQuery(QUERY_EXPENSES, {
+        pollInterval: 1000,
+    })
 
     return (
         <ul>
