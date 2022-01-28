@@ -1,24 +1,25 @@
 import { gql, useQuery } from '@apollo/client';
-import { HelloWorld } from './HelloWorld';
+import ExpensesInsert from './ExpensesInsert';
 
-const QUERY = gql`
-  query getUsers {
-    users {
-      name
-    }
-  }
-`
+// const QUERY = gql`
+//   query getUsers {
+//     users {
+//       name
+//     }
+//   }
+// `
 
 function App() {
 
-  const res = useQuery(QUERY)
+  // const res = useQuery(QUERY)
 
   return (
-    <div>
-        {res.data && <ul>
-          {res.data.users.map(user => <li key={user.name}>{user.name}</li>)}
-          </ul>}
-    </div>
+    // <div>
+    //     {res.data && <ul>
+    //       {res.data.users.map(user => <li key={user.name}>{user.name}</li>)}
+    //       </ul>}
+    // </div>
+    <ExpensesInsert />
   );
 }
 
