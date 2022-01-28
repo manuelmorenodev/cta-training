@@ -6,6 +6,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import './index.css';
 
 const client = new ApolloClient({
+  // uri: 'http://hasura:8080/v1/graphql',
   uri: 'https://8080-manuelmorenodev-ctatrain-no3o8mxch0c.ws-eu29.gitpod.io/v1/graphql',
   cache: new InMemoryCache()
 })

@@ -1,5 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import ExpensesInsert from './ExpensesInsert';
+import ExpensesList from './ExpensesList';
 
 // const QUERY = gql`
 //   query getUsers {
@@ -14,12 +15,10 @@ function App() {
   // const res = useQuery(QUERY)
 
   return (
-    // <div>
-    //     {res.data && <ul>
-    //       {res.data.users.map(user => <li key={user.name}>{user.name}</li>)}
-    //       </ul>}
-    // </div>
-    <ExpensesInsert />
+    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+      <ExpensesInsert />
+      <ExpensesList />
+    </div>
   );
 }
 
