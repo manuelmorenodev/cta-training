@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { gql, useMutation, useQuery } from '@apollo/client';
 
 const QUERY_USERS = gql`
@@ -16,11 +16,14 @@ const MUTATION_ADD_EXPENSE = gql`
       $amount: Int!
       $notes: String
     ) {
-      insert_expenses_one(object: {user_id: $userId, amount: $amount, notes: $notes}) {
+      insert_expenses_one(object: {
+        user_id: $userId,
+        amount: $amount,
+        notes: $notes
+      }) {
         id
       }
     }
-
 `
 
 
@@ -30,20 +33,17 @@ export default function ExpensesInsert() {
 
   const [addExpense, { data, loading, error }] = useMutation(MUTATION_ADD_EXPENSE)
 
-  const [formState, setFormState] = useState({
+  const initialState = {
     userId: 0,
     amount: '',
     notes: '',
-  })
+  }
+
+  const [formState, setFormState] = useState(initialState)
 
   if (loading) return 'Submitting...';
   if (error) return `Submission error! ${error.message}`;
   
-
-  // useEffect(() => {
-  //   console.log(formState);
-  // })
-
   const handleSubmit = event => {
 
     event.preventDefault();
@@ -51,6 +51,8 @@ export default function ExpensesInsert() {
     addExpense({
       variables: formState,
     });
+
+    setFormState(initialState)
 
   }
 
