@@ -12,7 +12,6 @@ const QUERY = gql`
 function App() {
 
   const res = useQuery(QUERY)
-  console.log(res);
 
   return (
     <div>
