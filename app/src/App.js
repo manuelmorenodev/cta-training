@@ -1,23 +1,23 @@
-import { gql, useQuery } from '@apollo/client';
-import ExpensesInsert from './ExpensesInsert';
-import ExpensesList from './ExpensesList';
-
-// const QUERY = gql`
-//   query getUsers {
-//     users {
-//       name
-//     }
-//   }
-// `
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-
-  // const res = useQuery(QUERY)
-
   return (
-    <div style={{display: 'flex', justifyContent: 'space-between'}}>
-      <ExpensesInsert />
-      <ExpensesList />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }

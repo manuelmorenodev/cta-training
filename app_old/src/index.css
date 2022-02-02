@@ -1,0 +1,13 @@
+* {
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+label {
+    display: block;
+}
+
+label span {
+    display: block;
+    padding: 10px 0;
+}
