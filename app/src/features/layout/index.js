@@ -1,5 +1,6 @@
 import * as hooks from "./hooks";
 import { Layout } from "./Layout";
+import { Title } from "./Title";
 
 export const layout = ({ registerAction, registerHook }) => {
   registerHook(hooks);
@@ -13,15 +14,22 @@ export const layout = ({ registerAction, registerHook }) => {
 
   registerAction({
     hook: "$INIT_FEATURES",
-    handler: ({ createHook, setContext }) => {
+    handler: ({ createHook, setContext, getConfig }) => {
       // Collect routes from any feature:
       const routes = createHook
         .sync(hooks.LAYOUT_ROUTES)
         .reduce((acc, curr) => [...acc, ...curr[0]], []);
 
+      const { value: title } = createHook.waterfall(hooks.LAYOUT_TITLE, {
+        component: Title,
+        props: {
+          value: getConfig("layout.title.value", "config(layout.title.value)")
+        }
+      });
+
       // Export routes to the ForrestJS App context:
       setContext("layout.routes.items", routes);
+      setContext("layout.routes.title", title);
     }
   });
 };
-  
