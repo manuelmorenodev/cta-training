@@ -1,3 +1,1 @@
-export const DashboardTitle = ({ value }) => {
-  return <h1>{value}</h1>;
-};
+export const DashboardTitle = () => <h2>Im dashboard</h2>;

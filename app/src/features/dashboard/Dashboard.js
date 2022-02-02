@@ -1,1 +1,1 @@
-export const Dashboard = () => "dashboard";
+export const Dashboard = () => "the dashboard";

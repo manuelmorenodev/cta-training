@@ -1,3 +1,1 @@
-export const AddExpense = () => {
-  return <div>Add expense</div>;
-};
+export const AddExpense = () => "add expense";

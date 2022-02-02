@@ -1,6 +1,6 @@
 import { Dashboard } from "./Dashboard";
-import { Settings } from "./Settings";
 import { DashboardTitle } from "./DashboardTitle";
+import { Settings } from "./Settings";
 
 export const dashboard = ({ registerAction }) => {
   registerAction({
@@ -24,25 +24,20 @@ export const dashboard = ({ registerAction }) => {
   });
 
   registerAction({
-    hook: "$LAYOUT_MENU_COMPONENTS",
+    hook: "$LAYOUT_MENU_COMPONENT",
     handler: [
       {
         props: {
-          to: '/',
-          children: 'Dashboard'
+          to: "/",
+          children: "Dashboard"
         }
       },
       {
         props: {
-          to: '/settings',
-          children: 'Settings'
+          to: "/settings",
+          children: "Settings"
         }
       }
     ]
-  });
-
-  registerAction({
-    hook: "$LAYOUT_TITLE_COMPONENT",
-    handler: { component: DashboardTitle }
   });
 };

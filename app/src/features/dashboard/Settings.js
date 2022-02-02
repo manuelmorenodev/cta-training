@@ -1,1 +1,1 @@
-export const Settings = () => "settings";
+export const Settings = () => "the Settings";

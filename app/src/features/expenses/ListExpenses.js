@@ -1,3 +1,1 @@
-export const ListExpenses = () => {
-  return <div>List expenses</div>;
-};
+export const ListExpenses = () => "list expense";

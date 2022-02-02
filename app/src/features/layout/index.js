@@ -1,35 +1,44 @@
 import * as hooks from "./hooks";
 import { Layout } from "./Layout";
-import { Title } from "./Title";
+import { LayoutTitle } from "./LayoutTitle";
 
 export const layout = ({ registerAction, registerHook }) => {
   registerHook(hooks);
 
   registerAction({
     hook: "$REACT_ROOT_COMPONENT",
-    handler: {
-      component: Layout
-    }
+    handler: { component: Layout }
   });
 
   registerAction({
     hook: "$INIT_FEATURES",
     handler: ({ createHook, setContext, getConfig }) => {
       // Collect routes from any feature:
-      const routes = createHook
-        .sync(hooks.LAYOUT_ROUTES)
-        .reduce((acc, curr) => [...acc, ...curr[0]], []);
+      const routeItems = createHook
+        .sync(hooks.LAYOUT_ROUTE_COMPONENTS)
+        .reduce((a, c) => [...a, ...c[0]], []);
 
-      const { value: title } = createHook.waterfall(hooks.LAYOUT_TITLE, {
-        component: Title,
-        props: {
-          value: getConfig("layout.title.value", "config(layout.title.value)")
+      // Collect menu items from any feature:
+      const menuItems = createHook
+        .sync(hooks.LAYOUT_MENU_COMPONENTS)
+        .reduce((a, c) => [...a, ...c[0]], []);
+
+      // Let feature REPLACE the title component
+      // or get the default value from App's config
+      const { value: title } = createHook.waterfall(
+        hooks.LAYOUT_TITLE_COMPONENT,
+        {
+          component: LayoutTitle,
+          props: {
+            value: getConfig("layout.title.value", "config(layout.title.value)")
+          }
         }
-      });
+      );
 
       // Export routes to the ForrestJS App context:
-      setContext("layout.routes.items", routes);
-      setContext("layout.routes.title", title);
+      setContext("layout.routes.items", routeItems);
+      setContext("layout.menu.items", menuItems);
+      setContext("layout.title", title);
     }
   });
 };
