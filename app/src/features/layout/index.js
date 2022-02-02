@@ -13,10 +13,15 @@ export const layout = ({ registerAction, registerHook }) => {
 
   registerAction({
     hook: "$INIT_FEATURES",
-    handler: ({ createHook }) => {
-      console.log("hello world");
-      const data = createHook(hooks.LAYOUT_ROUTES).map(($) => $[0]);
-      console.log(data);
+    handler: ({ createHook, setContext }) => {
+      // Collect routes from any feature:
+      const routes = createHook
+        .sync(hooks.LAYOUT_ROUTES)
+        .reduce((acc, curr) => [...acc, ...curr[0]], []);
+
+      // Export routes to the ForrestJS App context:
+      setContext("layout.routes.items", routes);
     }
   });
 };
+  
